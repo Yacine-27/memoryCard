@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 import Card from "./components/Card";
 import Score from "./components/Score";
+import CardsNoSetter from "./components/CardsNoSetter";
+
+import { getMultiplePokemonImages } from "./utilities";
 
 function App() {
-  const [cards, setCards] = useState([
-    { text: "card 1", id: 1, isClicked: false },
-    { text: "card 2", id: 2, isClicked: false },
-    { text: "card 3", id: 3, isClicked: false },
-    { text: "card 4", id: 4, isClicked: false },
-    { text: "card 5", id: 5, isClicked: false },
-  ]);
+  const [cards, setCards] = useState([]);
+  const [cardsNo, setCardsNo] = useState(8);
   const [highscore, setHighscore] = useState(0);
-  const score = cards.filter((card) => card.isClicked).length;
+  useEffect(() => {
+    let ignore = false;
+    getMultiplePokemonImages(cardsNo).then((data) => {
+      if (!ignore) {
+        setCards(
+          data.map((src) => {
+            return { src: src, id: crypto.randomUUID(), isClicked: false };
+          })
+        );
+      }
+    });
+    return () => {
+      ignore = true;
+    };
+  }, [cardsNo]);
   const findCardById = (id) => {
     return cards.find((card) => card.id === id);
   };
@@ -44,15 +56,21 @@ function App() {
     }
     return colonedCards;
   };
+  const handleCardsNoChange = (newNumber) => {
+    setCardsNo(newNumber);
+  };
+  const score = cards.filter((card) => card.isClicked).length;
+
   return (
     <>
       <Score score={score} highscore={highscore} />
+      <CardsNoSetter onSubmit={handleCardsNoChange} cardsNo={cardsNo} />
       <div className="cards">
         {randomizedCards().map((card) => (
           <Card
             key={card.id}
             id={card.id}
-            text={card.text}
+            src={card.src}
             onClick={handleCardClick}
           />
         ))}
