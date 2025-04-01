@@ -4,6 +4,7 @@ import "./App.css";
 import Card from "./components/Card";
 import Score from "./components/Score";
 import CardsNoSetter from "./components/CardsNoSetter";
+import Header from "./components/Header.jsx";
 
 import { getMultiplePokemonImages } from "./utilities";
 
@@ -63,8 +64,9 @@ function App() {
 
   return (
     <>
-      <Score score={score} highscore={highscore} />
+      <Header />
       <CardsNoSetter onSubmit={handleCardsNoChange} cardsNo={cardsNo} />
+      <Score score={score} highscore={highscore} />
       <div className="cards">
         {randomizedCards().map((card) => (
           <Card

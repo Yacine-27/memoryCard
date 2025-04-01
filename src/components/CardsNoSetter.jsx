@@ -1,3 +1,5 @@
+import "../styles/cardSetter.css";
+
 import { useState } from "react";
 
 export default function CardsNoSetter({ onSubmit, cardsNo }) {
@@ -8,7 +10,7 @@ export default function CardsNoSetter({ onSubmit, cardsNo }) {
   };
   return (
     <form className="cards-setter" onSubmit={handleSubmit}>
-      <label htmlFor="cards-setter">No. of Cards : </label>
+      <label htmlFor="cards-setter">Set of Cards : </label>
       <input
         type="number"
         id="cards-setter"
@@ -18,7 +20,7 @@ export default function CardsNoSetter({ onSubmit, cardsNo }) {
           setValue(event.target.value);
         }}
       />
-      <button type="submit">Change Cards number:</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

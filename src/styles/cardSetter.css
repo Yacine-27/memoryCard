@@ -1,0 +1,45 @@
+.cards-setter {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.cards-setter label {
+  font-size: 1.6rem;
+}
+
+.cards-setter input {
+  padding: 1.2rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: #ddd;
+  font-family: inherit;
+  text-align: center;
+  border: none;
+  border-radius: 2rem;
+}
+
+.cards-setter input:focus {
+  outline: none;
+  background-color: #3e3f5b;
+  color: #fff;
+}
+
+.cards-setter button {
+  padding: 1.2rem;
+  font-family: inherit;
+  border-radius: 2rem;
+  height: 5rem;
+  cursor: pointer;
+  background-color: #ddd;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.cards-setter button:hover {
+  background-color: #3e3f5b;
+  color: #fff;
+  transform: scale(1.1);
+}

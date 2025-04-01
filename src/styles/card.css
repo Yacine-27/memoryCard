@@ -1,8 +1,14 @@
 .card {
-  border: 0.15rem solid #000;
-  width: fit-content;
+  background-color: #685752;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .pokemon-img {
-  background-color: #ddd;
+  min-width: 15rem;
 }
